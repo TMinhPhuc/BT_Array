@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Tập Về Nhà - Mảng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header-title {
+            color: #f6a623;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <h1 class="text-center header-title mb-4">Bài Tập Về Nhà</h1>
+    
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title mb-3">Nhập số nguyên cần thực hiện:</h5>
+            <div class="row g-3 align-items-center mb-3">
+                <div class="col-auto">
+                    <input type="number" class="form-control" id="inputNum" placeholder="Nhập số n...">
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-primary" id="btnAddNum" onclick="pushArray()">Thêm số</button>
+                </div>
+            </div>
+            <div class="alert alert-success" role="alert">
+                👉 <strong>Mảng hiện tại: </strong> <span id="arrayDisplay">[]</span>
+            </div>
+        </div>
+    </div>
+
+    <h5 class="mb-3">Danh sách chức năng:</h5>
+
+    <div class="accordion shadow-sm" id="exerciseAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                    1. Tổng các số dương trong mảng
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnSumPositive" onclick="total()">Tính tổng</button>
+                    <div class="alert alert-info mb-0" id="result1">Kết quả: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                    2. Đếm có bao nhiêu số dương trong mảng
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnCountPositive" onclick="countPositiveNumber()">Đếm số dương</button>
+                    <div class="alert alert-info mb-0" id="result2">Kết quả: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                    3. Tìm số nhỏ nhất trong mảng
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnFindMin" onclick="findMin()">Tìm số nhỏ nhất</button>
+                    <div class="alert alert-info mb-0" id="result3">Kết quả: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                    4. Tìm số dương nhỏ nhất trong mảng
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnFindMinPositive" onclick="findMinPositive()">Tìm số dương nhỏ nhất</button>
+                    <div class="alert alert-info mb-0" id="result4">Kết quả: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                    5. Tìm số chẵn cuối cùng trong mảng
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnFindLastEven" onclick="findLastEven()">Tìm số chẵn</button>
+                    <div class="alert alert-info mb-0" id="result5">Kết quả: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+                    6. Đổi chỗ 2 giá trị trong mảng theo vị trí
+                </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <div class="row g-3 mb-3">
+                        <div class="col-auto">
+                            <input type="number" class="form-control" id="inputPos1" placeholder="Nhập vị trí 1">
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" class="form-control" id="inputPos2" placeholder="Nhập vị trí 2">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-success" id="btnSwap" onclick="switchArr()">Đổi chỗ</button>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mb-0" id="result6">Mảng sau khi đổi: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven">
+                    7. Sắp xếp mảng theo thứ tự tăng dần
+                </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnSortAsc" onclick="ascendSort()">Sắp xếp</button>
+                    <div class="alert alert-info mb-0" id="result7">Mảng sau khi sắp xếp: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight">
+                    8. Tìm số nguyên tố đầu tiên trong mảng
+                </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnFindFirstPrime" onclick="findFirstPrimeNumber()">Tìm số nguyên tố</button>
+                    <div class="alert alert-info mb-0" id="result8">Kết quả (Nếu không có trả về -1): </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine">
+                    9. Nhập thêm 1 mảng số thực, đếm số nguyên
+                </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <div class="row g-3 mb-2">
+                        <div class="col-auto">
+                            <input type="number" step="any" class="form-control" id="inputFloatNum" placeholder="Nhập số thực...">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary" id="btnAddFloatNum" onclick="pushFloatArray()">Thêm số</button>
+                        </div>
+                    </div>
+                    <p class="mb-2">Mảng số thực hiện tại: <span id="floatArrayDisplay" class="fw-bold">[]</span></p>
+                    <button class="btn btn-success mb-2" id="btnCountIntegers" onclick="countIntegerFloatArray()">Đếm số nguyên</button>
+                    <div class="alert alert-info mb-0" id="result9">Số lượng số nguyên trong mảng: </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen">
+                    10. So sánh số lượng số dương và số lượng số âm
+                </button>
+            </h2>
+            <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#exerciseAccordion">
+                <div class="accordion-body">
+                    <button class="btn btn-success mb-2" id="btnComparePosNeg" onclick="comparePostitiveAndNegative()">So sánh</button>
+                    <div class="alert alert-info mb-0" id="result10">Kết quả: </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="./js/index.js"></script>
+
+</body>
+</html>
